@@ -1,10 +1,31 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import { getSessionPatient } from './session';
+
+function ProtectedLayout() {
+  if (!getSessionPatient()) {
+    return <Navigate to="/login" replace />;
+  }
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
+}
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="*" element={<main className="container"><h1>Gestión Médica</h1></main>} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route element={<ProtectedLayout />}>
+          <Route path="/" element={<main className="container"><h1>Inicio</h1></main>} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

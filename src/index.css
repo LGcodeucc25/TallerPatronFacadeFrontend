@@ -223,3 +223,19 @@ button.secondary {
   background: #fee4e2;
   color: #b42318;
 }
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tab {
+  background: #e4e7eb;
+  color: #1f2933;
+}
+
+.tab.active {
+  background: #0b6e99;
+  color: #fff;
+}

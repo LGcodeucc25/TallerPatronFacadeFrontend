@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import DashboardPage from './pages/DashboardPage';
 import ScheduleAppointmentPage from './pages/ScheduleAppointmentPage';
 import LoginPage from './pages/LoginPage';
+import MedicalHistoryPage from './pages/MedicalHistoryPage';
 import RegisterPage from './pages/RegisterPage';
 import { getSessionPatient } from './session';
 
@@ -27,6 +28,7 @@ export default function App() {
         <Route element={<ProtectedLayout />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/schedule" element={<ScheduleAppointmentPage />} />
+          <Route path="/history" element={<MedicalHistoryPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
